@@ -255,6 +255,118 @@ function getSamplePosts(limit: number, page: number): PostsApiResponse {
         { symbol: "❤️", count: 17 },
       ],
     },
+    {
+      id: 2,
+      title: "Beautiful Sunset Today",
+      body: "Just witnessed an amazing sunset from my balcony. Nature never fails to inspire and amaze me. The colors were absolutely breathtaking!",
+      tags: ["nature", "sunset", "photography"],
+      media: {
+        url: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+        alt: "Beautiful sunset",
+      },
+      created: new Date(Date.now() - 172800000).toISOString(),
+      updated: new Date(Date.now() - 172800000).toISOString(),
+      author: {
+        name: "nature_lover",
+        email: "nature@example.com",
+        bio: "Photography enthusiast",
+        avatar: {
+          url: "https://images.unsplash.com/photo-1494790108755-2616b612b1e1",
+          alt: "Nature lover avatar",
+        },
+      },
+      _count: {
+        comments: 8,
+        reactions: 23,
+      },
+      reactions: [
+        { symbol: "👍", count: 15 },
+        { symbol: "❤️", count: 8 },
+      ],
+    },
+    {
+      id: 3,
+      title: "Learning TypeScript",
+      body: "Finally diving deep into TypeScript! The type safety and developer experience is incredible. Here are some tips I've learned so far...",
+      tags: ["coding", "typescript", "webdev"],
+      created: new Date(Date.now() - 259200000).toISOString(),
+      updated: new Date(Date.now() - 259200000).toISOString(),
+      author: {
+        name: "dev_coder",
+        email: "dev@example.com",
+        bio: "Full-stack developer",
+        avatar: {
+          url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+          alt: "Developer avatar",
+        },
+      },
+      _count: {
+        comments: 15,
+        reactions: 34,
+      },
+      reactions: [
+        { symbol: "👍", count: 20 },
+        { symbol: "❤️", count: 14 },
+      ],
+    },
+    {
+      id: 4,
+      title: "Coffee Shop Vibes",
+      body: "Working from my favorite coffee shop today. There's something magical about the ambient noise and coffee aroma that boosts productivity!",
+      tags: ["coffee", "work", "lifestyle"],
+      media: {
+        url: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb",
+        alt: "Coffee shop",
+      },
+      created: new Date(Date.now() - 345600000).toISOString(),
+      updated: new Date(Date.now() - 345600000).toISOString(),
+      author: {
+        name: "coffee_enthusiast",
+        email: "coffee@example.com",
+        bio: "Remote worker & coffee lover",
+        avatar: {
+          url: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb",
+          alt: "Coffee enthusiast avatar",
+        },
+      },
+      _count: {
+        comments: 6,
+        reactions: 18,
+      },
+      reactions: [
+        { symbol: "👍", count: 12 },
+        { symbol: "☕", count: 6 },
+      ],
+    },
+    {
+      id: 5,
+      title: "Weekend Hiking Adventure",
+      body: "Completed a challenging 10-mile hike through the mountain trails. The view from the summit was absolutely worth every step!",
+      tags: ["hiking", "adventure", "fitness"],
+      media: {
+        url: "https://images.unsplash.com/photo-1551632811-561732d1e306",
+        alt: "Mountain hiking trail",
+      },
+      created: new Date(Date.now() - 432000000).toISOString(),
+      updated: new Date(Date.now() - 432000000).toISOString(),
+      author: {
+        name: "mountain_explorer",
+        email: "hiker@example.com",
+        bio: "Adventure seeker",
+        avatar: {
+          url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+          alt: "Hiker avatar",
+        },
+      },
+      _count: {
+        comments: 9,
+        reactions: 27,
+      },
+      reactions: [
+        { symbol: "👍", count: 18 },
+        { symbol: "💪", count: 9 },
+      ],
+    }
   ];
 
   const startIndex = (page - 1) * limit;

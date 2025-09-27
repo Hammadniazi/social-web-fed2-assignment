@@ -371,6 +371,31 @@ function initializeFeedInteractions(): void {
     }
   });
 
+  // Define missing navigation functions first
+  function navigateToPage(page: number) {
+    const url = new URL(window.location.href);
+    url.searchParams.set('page', page.toString());
+    
+    // Use history.pushState for SPA navigation
+    history.pushState({ path: url.pathname + url.search }, '', url.pathname + url.search);
+    
+    // Re-render the current route with new parameters
+    const renderRoute = (window as any).renderRoute;
+    if (renderRoute) {
+      renderRoute(url.pathname + url.search);
+    }
+  }
+
+  function navigateToProfile(username: string) {
+    const url = `/profile?user=${username}`;
+    history.pushState({ path: url }, '', url);
+    
+    const renderRoute = (window as any).renderRoute;
+    if (renderRoute) {
+      renderRoute(url);
+    }
+  }
+
   // Make ALL functions globally available
   (window as any).togglePostMenu = togglePostMenu;
   (window as any).editPost = editPostFunction;
@@ -388,21 +413,8 @@ function initializeFeedInteractions(): void {
   (window as any).closeFullPostModal = closeFullPostModal;
   (window as any).showReactionsModal = showReactionsModal;
   (window as any).hideReactionsModal = hideReactionsModal;
-
-  // Define missing navigation functions
-  if (!window.navigateToProfile) {
-    (window as any).navigateToProfile = function (username: string) {
-      window.location.href = `/profile?user=${username}`;
-    };
-  }
-
-  if (!window.navigateToPage) {
-    (window as any).navigateToPage = function (page: number) {
-      const url = new URL(window.location.href);
-      url.searchParams.set('page', page.toString());
-      window.location.href = url.toString();
-    };
-  }
+  (window as any).navigateToPage = navigateToPage;
+  (window as any).navigateToProfile = navigateToProfile;
 }
 
 /* -------------------------------------------------------------------------- */

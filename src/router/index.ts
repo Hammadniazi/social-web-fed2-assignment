@@ -47,9 +47,12 @@ export default async function router(
   currentPath = '',
   routes = PATHS
 ): Promise<string> {
+  // Extract pathname without query parameters for route matching
+  const pathname = currentPath.split('?')[0];
+  
   // Find the matching route by path
   const currentRoute = Object.values(routes).find(
-    (route) => route.url === currentPath
+    (route) => route.url === pathname
   );
 
   let html = await NotFoundPage();
@@ -60,7 +63,7 @@ export default async function router(
       // Redirect to login page
       history.pushState({ path: '/' }, '', '/');
       html = await LoginPage();
-    } else if (currentPath === '/' && isLoggedIn()) {
+    } else if (pathname === '/' && isLoggedIn()) {
       // If user is logged in and tries to access login page, redirect to feed
       history.pushState({ path: '/feed' }, '', '/feed');
       html = await FeedPage();
@@ -84,7 +87,7 @@ export default async function router(
  * - If the path or content container is not available, the function exits early.
  */
 export async function renderRoute(path?: string | undefined) {
-  path = path ?? window.location.pathname;
+  path = path ?? (window.location.pathname + window.location.search);
 
   // Get the element where content will be rendered
   const contentContainer = document.getElementById(APP_CONTAINER_CLASSNAME);
